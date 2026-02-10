@@ -1,0 +1,625 @@
+/* ===== Navbar Styles ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 80px;
+  background: rgba(10, 26, 47, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.scrolled {
+  background: rgba(10, 26, 47, 0.98);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  height: 70px;
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  height: 100%;
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  gap: 30px;
+}
+
+/* Logo on left side */
+.navbar-brand {
+  flex: 0 0 auto;
+}
+
+.nav-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.nav-logo-link:hover {
+  opacity: 0.9;
+}
+
+.nav-logo-wrapper {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-logo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Spacer for center alignment */
+.navbar-spacer {
+  flex: 1;
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .navbar-spacer {
+    display: block;
+  }
+}
+
+/* Desktop Navigation - centered with proper spacing */
+.desktop-nav {
+  display: none;
+  position: relative;
+  justify-content: center;
+  flex: 1;
+  max-width: 800px;
+}
+
+@media (min-width: 992px) {
+  .desktop-nav {
+    display: flex;
+  }
+}
+
+.nav-links-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.nav-links-container {
+  display: flex;
+  gap: 6px;
+  background: rgba(11, 94, 215, 0.05);
+  padding: 6px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #c7d2e9;
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+  white-space: nowrap;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+  background: rgba(11, 94, 215, 0.15);
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Single animated underline */
+.nav-underline {
+  position: absolute;
+  bottom: -8px;
+  height: 2px;
+  background: linear-gradient(90deg, #0B5ED7, #2BB0FF);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left center;
+  box-shadow: 0 2px 8px rgba(11, 94, 215, 0.3);
+}
+
+/* Actions/Enquiry Button on right */
+.navbar-actions {
+  flex: 0 0 auto;
+}
+
+.navbar-enquiry-btn {
+  background: linear-gradient(135deg, #0B5ED7 0%, #2BB0FF 100%);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(11, 94, 215, 0.3);
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-enquiry-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.navbar-enquiry-btn:hover::before {
+  left: 100%;
+}
+
+.navbar-enquiry-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(11, 94, 215, 0.5);
+}
+
+.navbar-enquiry-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 15px rgba(11, 94, 215, 0.3);
+}
+
+/* Mobile Menu Button */
+.navbar-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+@media (min-width: 992px) {
+  .navbar-toggle {
+    display: none;
+  }
+}
+
+.navbar-toggle-icon {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #0B5ED7, #2BB0FF);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggle:hover .navbar-toggle-icon {
+  background: linear-gradient(90deg, #2BB0FF, #0B5ED7);
+  transform: scale(1.05);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 320px;
+  background: rgba(10, 26, 47, 0.98);
+  backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(11, 94, 215, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.mobile-menu-overlay.active .mobile-menu {
+  transform: translateX(0);
+}
+
+/* Mobile Menu Header */
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  border-bottom: 1px solid rgba(11, 94, 215, 0.1);
+}
+
+.mobile-menu-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-menu-logo {
+  height: 40px;
+  width: auto;
+}
+
+.mobile-menu-company {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #0B5ED7 0%, #2BB0FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mobile-menu-close {
+  background: transparent;
+  border: none;
+  color: #c7d2e9;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-close:hover {
+  color: #ffffff;
+  background: rgba(11, 94, 215, 0.1);
+}
+
+/* Mobile Menu Content */
+.mobile-menu-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.mobile-nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #c7d2e9;
+  text-decoration: none;
+  padding: 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.mobile-nav-link:hover {
+  color: #ffffff;
+  background: rgba(11, 94, 215, 0.1);
+}
+
+.mobile-nav-link.active {
+  color: #ffffff;
+  background: rgba(11, 94, 215, 0.15);
+  border-left: 3px solid #0B5ED7;
+}
+
+.mobile-enquiry-btn {
+  background: linear-gradient(135deg, #0B5ED7 0%, #2BB0FF 100%);
+  color: white;
+  border: none;
+  padding: 16px 24px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  box-shadow: 0 4px 15px rgba(11, 94, 215, 0.3);
+}
+
+.mobile-enquiry-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(11, 94, 215, 0.4);
+}
+
+/* ===== Video Hero Styles ===== */
+.video-hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: transparent;
+  padding-top: 80px; /* Match navbar height */
+  box-sizing: border-box;
+  margin-top: 10px; /* Compensate for fixed navbar */
+}
+
+.video-hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== Section Styles for Auto-Scroll Detection ===== */
+/* Add this to your main App.css or ensure these sections exist */
+#home,
+#about,
+#features,
+#why-neu1,
+#gallery,
+#pricing,
+#terms {
+  position: relative;
+  scroll-margin-top: 80px;
+  min-height: 100vh;
+  padding: 100px 0 50px;
+  width: 100%;
+}
+
+/* Home section needs different padding */
+#home {
+  padding-top: 80px;
+  min-height: calc(100vh - 80px);
+}
+
+/* Ensure sections are properly spaced */
+.section {
+  position: relative;
+  width: 100%;
+}
+
+/* ===== Floating Buttons ===== */
+.call-float {
+  position: fixed;
+  bottom: 105px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #0B5ED7, #2BB0FF);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(11, 94, 215, 0.4);
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.3s ease;
+  animation: callPulse 2s ease-in-out infinite;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #0B5ED7, #2BB0FF);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(11, 94, 215, 0.4);
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.3s ease;
+  animation: whatsappPulse 2s ease-in-out infinite;
+}
+
+.call-float:hover,
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(11, 94, 215, 0.6);
+}
+
+@keyframes callPulse {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(11, 94, 215, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(11, 94, 215, 0.8);
+  }
+}
+
+@keyframes whatsappPulse {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(11, 94, 215, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(11, 94, 215, 0.8);
+  }
+}
+
+/* ===== Modal Styles ===== */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  transition: background 0.8s ease, backdrop-filter 0.8s ease;
+}
+
+.modal.active {
+  display: flex;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  animation: modalBackdropFadeIn 0.6s ease-out forwards;
+}
+
+.modal.closing {
+  animation: modalBackdropFadeOut 0.5s ease-out forwards;
+}
+
+@keyframes modalBackdropFadeIn {
+  from {
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+  }
+  to {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+  }
+}
+
+@keyframes modalBackdropFadeOut {
+  from {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+  }
+  to {
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+  }
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 1200px) {
+  .navbar-container {
+    padding: 0 24px;
+  }
+  
+  .nav-links-container {
+    gap: 4px;
+  }
+  
+  .nav-link {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .navbar-enquiry-btn {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .desktop-nav,
+  .navbar-spacer,
+  .navbar-actions {
+    display: none;
+  }
+  
+  .navbar-inner {
+    gap: 0;
+    justify-content: space-between;
+  }
+  
+  /* Adjust section padding for mobile */
+  #home,
+  #about,
+  #features,
+  #why-neu1,
+  #gallery,
+  #pricing,
+  #terms {
+    scroll-margin-top: 65px;
+    padding: 80px 0 40px;
+  }
+  
+  #home {
+    padding-top: 65px;
+    min-height: calc(100vh - 65px);
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 16px;
+  }
+  
+  .navbar.scrolled {
+    height: 65px;
+  }
+  
+  .nav-logo-wrapper {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .nav-logo {
+    height: 35px;
+  }
+  
+  .call-float,
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .call-float {
+    bottom: 85px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-menu {
+    width: 280px;
+  }
+  
+  .mobile-menu-header {
+    padding: 20px;
+  }
+  
+  .mobile-menu-content {
+    padding: 20px;
+  }
+}
+
